@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  sos-postgres-compose:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "sosfood"
+    ports:
+      - "15432:5432"
+
+    networks:
+      - postgres-compose-network
+
+  sos-pgadmin-compose:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "mateussvinicius22@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "sosfood"
+    ports:
+      - "1643:80"
+    depends_on:
+      - sos-postgres-compose
+    networks:
+      - postgres-compose-network
+
+networks:
+  postgres-compose-network:
+    driver: bridge
