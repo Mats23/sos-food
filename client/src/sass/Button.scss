@@ -1,0 +1,28 @@
+@import './styles.scss';
+
+.Button {
+    @extend %u-display-flex, %u-flex-total-centered, %u-no-text-decoration, %u-capitalize;
+    background-color: #ea1d2c;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 3px 3px rgba(#000, .25);
+    color: #fff;
+    padding: $layout-module-size / 2;
+    transition: all 150ms ease;
+    width: 100px;
+    
+    &:hover {
+        background-color: lighten(#ea1d2c, 15%);
+    }
+    
+    &:active {
+        box-shadow: none;
+        transform: translatey(2px);
+    }
+    
+    &:focus {
+        box-shadow: none;
+        border: none;
+        outline: none;
+      }
+}
