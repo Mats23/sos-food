@@ -1,0 +1,23 @@
+@import './variables';
+
+// ==========================================================================
+// Padding/Margin
+// ==========================================================================
+
+%u-no-padding { padding: 0; }
+%u-no-margin { margin: 0; }
+
+%u-default-padding { padding: $layout-module-size; }
+%u-default-margin { margin: $layout-module-size; }
+
+@each $direction in $directions {
+    %u-no-padding-#{$direction} { padding-#{$direction}: 0; }
+    %u-half-padding-#{$direction} { padding-#{$direction}: $layout-module-size / 2; }
+    %u-default-padding-#{$direction} { padding-#{$direction}: $layout-module-size; }
+    %u-double-padding-#{$direction} { padding-#{$direction}: $layout-module-size * 2; }
+    
+    %u-no-margin-#{$direction} { margin-#{$direction}: 0; }
+    %u-half-margin-#{$direction} { margin-#{$direction}: $layout-module-size / 2; }
+    %u-default-margin-#{$direction} { margin-#{$direction}: $layout-module-size; }
+    %u-double-margin-#{$direction} { margin-#{$direction}: $layout-module-size * 2; }
+}

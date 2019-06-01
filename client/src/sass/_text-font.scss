@@ -1,0 +1,21 @@
+// ==========================================================================
+// Text/Font
+// ==========================================================================
+
+%u-bold { font-weight: bold; }
+%u-no-bold { font-weight: normal; }
+%u-italic { font-style: italic; }
+%u-no-italic { font-style: normal; }
+
+%u-text-align-left { text-align: left; }
+%u-text-align-center { text-align: center; }
+%u-text-align-right { text-align: right; }
+%u-text-align-justify { text-align: justify; }
+
+%u-underline { text-decoration: underline; }
+%u-strike { text-decoration: line-through; }
+%u-no-text-decoration { text-decoration: none; }
+
+%u-uppercase { text-transform: uppercase; }
+%u-capitalize { text-transform: capitalize; }
+%u-no-text-transform { text-transform: none; }
