@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1><strong>SoS food</strong></h1>
-        <Button />
+        <Button href="/cadastro" button="Cadastrar Restaurante"/>
       </header>  
     </div>
   );

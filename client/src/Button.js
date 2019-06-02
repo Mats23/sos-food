@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import './sass/Button.scss';
+// import { Link } from 'react-router-dom'
+import './sass/Button.scss'
 
 export class Button extends Component {
     render() {
         return (
             <div>
-                <button href="#" className="Button">Cadastrar</button>
+                <a href={this.props.href} className="Button">{this.props.button}</a>
             </div>
         )
     }
