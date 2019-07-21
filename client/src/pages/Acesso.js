@@ -1,10 +1,9 @@
 import withRoot from "../withRoot";
 
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Link from "@material-ui/core/Link";
 import { Field, Form, FormSpy } from "react-final-form";
+import { makeStyles } from "@material-ui/core/styles";
+import Link from "@material-ui/core/Link";
 import Typography from "../components/Typography";
 import AppFooter from "../views/AppFooter";
 import AppAppBar from "../views/AppAppBar";
@@ -27,15 +26,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Cadastro() {
+function Acesso() {
   const classes = useStyles();
   const [sent, setSent] = React.useState(false);
 
   const validate = values => {
-    const errors = required(
-      ["firstName", "lastName", "email", "password"],
-      values
-    );
+    const errors = required(["email", "password"], values);
 
     if (!errors.email) {
       const emailError = email(values.email, values);
@@ -57,11 +53,12 @@ function Cadastro() {
       <AppForm>
         <React.Fragment>
           <Typography variant="h3" gutterBottom marked="center" align="center">
-            Cadastro
+            acesso
           </Typography>
           <Typography variant="body2" align="center">
-            <Link href="/acesso" underline="always">
-              Já possui uma conta?
+            {"Não é membro ainda? "}
+            <Link href="/cadastro" align="center" underline="always">
+              Cadastre-se aqui
             </Link>
           </Typography>
         </React.Fragment>
@@ -72,31 +69,9 @@ function Cadastro() {
         >
           {({ handleSubmit2, submitting }) => (
             <form onSubmit={handleSubmit2} className={classes.form} noValidate>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <Field
-                    autoFocus
-                    component={RFTextField}
-                    autoComplete="fname"
-                    fullWidth
-                    label="Nome"
-                    name="firstName"
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Field
-                    component={RFTextField}
-                    autoComplete="lname"
-                    fullWidth
-                    label="Sobrenome"
-                    name="lastName"
-                    required
-                  />
-                </Grid>
-              </Grid>
               <Field
                 autoComplete="email"
+                autoFocus
                 component={RFTextField}
                 disabled={submitting || sent}
                 fullWidth
@@ -104,9 +79,11 @@ function Cadastro() {
                 margin="normal"
                 name="email"
                 required
+                size="large"
               />
               <Field
                 fullWidth
+                size="large"
                 component={RFTextField}
                 disabled={submitting || sent}
                 required
@@ -128,18 +105,24 @@ function Cadastro() {
               <FormButton
                 className={classes.button}
                 disabled={submitting || sent}
+                size="large"
                 color="secondary"
                 fullWidth
               >
-                {submitting || sent ? "Em progresso…" : "Cadastrar"}
+                {submitting || sent ? "Em progresso…" : "Acessar"}
               </FormButton>
             </form>
           )}
         </Form>
+        <Typography align="center">
+          <Link underline="always" href="/esqueceu-senha">
+            Esqueceu a senha?
+          </Link>
+        </Typography>
       </AppForm>
       <AppFooter />
     </React.Fragment>
   );
 }
 
-export default withRoot(Cadastro);
+export default withRoot(Acesso);

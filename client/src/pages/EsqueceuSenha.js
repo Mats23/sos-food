@@ -1,10 +1,8 @@
 import withRoot from "../withRoot";
 
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Link from "@material-ui/core/Link";
 import { Field, Form, FormSpy } from "react-final-form";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "../components/Typography";
 import AppFooter from "../views/AppFooter";
 import AppAppBar from "../views/AppAppBar";
@@ -27,15 +25,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Cadastro() {
+function EsqueceuSenha() {
   const classes = useStyles();
   const [sent, setSent] = React.useState(false);
 
   const validate = values => {
-    const errors = required(
-      ["firstName", "lastName", "email", "password"],
-      values
-    );
+    const errors = required(["email", "password"], values);
 
     if (!errors.email) {
       const emailError = email(values.email, values);
@@ -57,12 +52,12 @@ function Cadastro() {
       <AppForm>
         <React.Fragment>
           <Typography variant="h3" gutterBottom marked="center" align="center">
-            Cadastro
+            Esqueceu sua senha?
           </Typography>
           <Typography variant="body2" align="center">
-            <Link href="/acesso" underline="always">
-              Já possui uma conta?
-            </Link>
+            {
+              "Digite seu endereço de e-mail abaixo e nós enviaremos um link para redefinir sua senha."
+            }
           </Typography>
         </React.Fragment>
         <Form
@@ -72,30 +67,8 @@ function Cadastro() {
         >
           {({ handleSubmit2, submitting }) => (
             <form onSubmit={handleSubmit2} className={classes.form} noValidate>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <Field
-                    autoFocus
-                    component={RFTextField}
-                    autoComplete="fname"
-                    fullWidth
-                    label="Nome"
-                    name="firstName"
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Field
-                    component={RFTextField}
-                    autoComplete="lname"
-                    fullWidth
-                    label="Sobrenome"
-                    name="lastName"
-                    required
-                  />
-                </Grid>
-              </Grid>
               <Field
+                autoFocus
                 autoComplete="email"
                 component={RFTextField}
                 disabled={submitting || sent}
@@ -104,17 +77,7 @@ function Cadastro() {
                 margin="normal"
                 name="email"
                 required
-              />
-              <Field
-                fullWidth
-                component={RFTextField}
-                disabled={submitting || sent}
-                required
-                name="password"
-                autoComplete="current-password"
-                label="Senha"
-                type="password"
-                margin="normal"
+                size="large"
               />
               <FormSpy subscription={{ submitError: true }}>
                 {({ submitError }) =>
@@ -128,10 +91,13 @@ function Cadastro() {
               <FormButton
                 className={classes.button}
                 disabled={submitting || sent}
+                size="large"
                 color="secondary"
                 fullWidth
               >
-                {submitting || sent ? "Em progresso…" : "Cadastrar"}
+                {submitting || sent
+                  ? "Em processo…"
+                  : "Enviar link de redefinição"}
               </FormButton>
             </form>
           )}
@@ -142,4 +108,4 @@ function Cadastro() {
   );
 }
 
-export default withRoot(Cadastro);
+export default withRoot(EsqueceuSenha);
