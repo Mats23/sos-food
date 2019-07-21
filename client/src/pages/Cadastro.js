@@ -1,6 +1,6 @@
 import React from 'react';
-import InputCustomizado from './component/InputCustomizado';
-import Button from './Button';
+import InputCustomizado from '../component/InputCustomizado';
+import Button from '../component/Button';
 
 function Cadastro() {
     return (
