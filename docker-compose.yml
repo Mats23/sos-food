@@ -2,11 +2,19 @@ version: '2'
 
 services:
 
-  sos-food:
+  db:
     image: postgres:alpine
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres
+    volumes: 
+      - /home/mats/Documentos/postgres:/var/lib/postgresql
     ports: 
       - 5432:5432
+  api:
+    image: spring:v2
+    ports: 
+      - 8080:8080
+    depends_on: 
+      - db
 
